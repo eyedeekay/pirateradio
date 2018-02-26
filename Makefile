@@ -47,3 +47,20 @@ log-mpd:
 
 log-eepsite:
 	docker logs pirateradio-eepsite
+
+eepsite-address:
+	/usr/bin/lynx -dump -listonly 127.0.0.1:7071/?page=i2p_tunnels | grep 'destination&b32' | sed 's|  9||g' | tr -d '. ' | sed 's|http://127001:7071/?page=local_destination&b32=||g' > address.b32.i2p
+	@echo http://$(shell cat address.b32.i2p).b32.i2p > address.b32.i2p
+
+md:
+	@echo "My i2p Radio Station"
+	@echo "===================="
+	@echo
+	@echo "Turnkey deep web music streaming"
+	@echo "--------------------------------"
+	@echo
+	@echo "  * **[Stream URL:]\($(shell cat address.b32.i2p)\)**"
+	@echo
+
+site:
+	make -s md | markdown > index.html
