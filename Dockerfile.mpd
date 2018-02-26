@@ -1,0 +1,6 @@
+FROM alpine:edge
+RUN apk update
+RUN apk add mpd
+RUN adduser -h /home/pirateradio -D pirateradio pirateradio
+COPY mpd.conf /etc/mpd.conf
+CMD mpd --no-daemon

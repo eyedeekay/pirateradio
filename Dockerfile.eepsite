@@ -1,0 +1,11 @@
+FROM debian:sid
+RUN apt-get update && apt-get install -y gpg
+RUN echo "deb http://repo.lngserv.ru/debian stretch main" | tee /etc/apt/sources.list.d/i2pd.list
+RUN echo "deb-src http://repo.lngserv.ru/debian stretch main" | tee -a /etc/apt/sources.list.d/i2pd.list
+RUN gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 66F6C87B98EBCFE2; \
+	gpg -a --export 66F6C87B98EBCFE2 | apt-key add -
+RUN apt-get update && apt-get install -y i2pd
+COPY tunnels.conf /etc/i2pd/tunnels.conf
+COPY i2pd.conf /etc/i2pd/i2pd.conf
+USER i2pd
+CMD i2pd --service --loglevel=error --conf=/etc/i2pd/i2pd.conf tunconf=/etc/i2pd/tunnels.conf
