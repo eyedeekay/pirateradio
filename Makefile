@@ -5,7 +5,7 @@ usage:
 	@echo
 	@echo ' install: make install'
 	@echo ' reinstall without purging some settings: make reinstall'
-	@echo ' re-generate all settings: make clobber reinstall'
+	@echo ' re-generate all settings: make clobber install'
 	@echo
 	@echo 'Configured Directories'
 	@echo '----------------------'
@@ -62,6 +62,19 @@ run-eepsite: network
 		-p 127.0.0.1:7071:7071 \
 		--volume $(i2pd_dat):/var/lib/i2pd:rw \
 		eyedeekay/pirateradio-eepsite
+
+new-tunconf:
+	@echo | tee tunnels.conf
+	@echo '[RADIOSPLASH]' | tee -a tunnels.conf
+	@echo 'type = http' | tee -a tunnels.conf
+	@echo 'host = pirateradio-splash' | tee -a tunnels.conf
+	@echo 'port = 8081' | tee -a tunnels.conf
+	@echo 'inport = 80' | tee -a tunnels.conf
+	@echo 'inbound.length = 1' | tee -a tunnels.conf
+	@echo 'outbound.length = 1' | tee -a tunnels.conf
+	@echo 'keys = radio-splash.dat' | tee -a tunnels.conf
+	@echo | tee -a tunnels.conf
+
 
 tunconf:
 	@echo "$(TUN_CONF)" | tee -a tunnels.conf
