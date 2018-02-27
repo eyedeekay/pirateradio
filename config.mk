@@ -11,29 +11,25 @@ define CONFIG_PAGE
 MacLeod of incompetech.com.\n\
 \n## Turnkey deep web music streaming\n\
 \n\
-\n  * [Splash URL:]($(shell tail -n 1 address.b32.i2p))\n\
-\n  * [Stream URL:]($(shell head -n 1 address.b32.i2p))\n\
+\n  * [Splash URL:](http://$(shell head -n 1 address.b32.i2p).b32.i2p)
+endef
+
+export CONFIG_PAGE
+
+define CONFIG_INFO
 \n## Client Configuration \
 \n\
 To listen as an http stream, you will need a client tunnel. \
 To configure an client tunnel in i2pd, add the following lines to \
 your /etc/i2pd/tunnels.conf file(or other tunnels.conf file per your \
 configuration. \n\
-\n        [radioone-client] \
-\n        type = client \
-\n        address = 127.0.0.1 \
-\n        port = 7099 \
-\n        destination = $(shell head -n 1 address.b32.i2p | sed 's|http://||g') \
-\n        destinationport = 80 \
-\n        inbound.length = 1 \
-\n        keys = radioone-client.dat \
-\n        matchtunnels = true \n\
-\n  You can also use an http proxy: \n\
-\n        vlc $(shell head -n 1 address.b32.i2p) \\ \
-\n         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous
+\n  You can use an http proxy: \n\
+\n        vlc $(shell tail -n 1 address.b32.i2p) \\ \
+\n         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous \m\
+\n or configure tunnels \n
 endef
 
-export CONFIG_PAGE
+export CONFIG_INFO
 
 define TUN_CONF
 [RADIO$(station)]\

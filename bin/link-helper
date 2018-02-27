@@ -1,0 +1,10 @@
+#! /usr/bin/env sh
+
+bin/ii-tunlist > .tmp
+
+for line in $(cat stations.txt); do
+    name=$(grep $line .tmp | sed "s|$line ||")
+    echo "  * [$name](http://$line.b32.i2p)"
+done
+
+rm -f .tmp

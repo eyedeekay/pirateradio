@@ -1,0 +1,19 @@
+#! /usr/bin/env sh
+
+bin/ii-tunlist > .tmp
+port="7090"
+for line in $(cat stations.txt); do
+    name=$(grep $line .tmp | sed "s|$line ||")
+        echo "        [$name-client]"
+        echo "        type = client"
+        echo "        address = 127.0.0.1"
+        echo "        port = $port"
+        echo "        destination = $line.b32.i2p"
+        echo "        destinationport = 80"
+        echo "        inbound.length = 1"
+        echo "        keys = radioone-client.dat"
+        echo "        matchtunnels = true"
+    port=$(expr $port + 1)
+done
+
+rm -f .tmp

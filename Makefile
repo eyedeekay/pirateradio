@@ -90,36 +90,46 @@ mpc-playlist:
 eepsite-address-splash:
 	./bin/ii-tunlist | \
 		grep "RADIOSPLASH" | \
-		sed "s|RADIOSPLASH||g" | tr -d ' ' | tee .address.b32.i2p
-
-eepsite-address:
-	make eepsite-address-splash
-	make eepsite-address-radio
-	mv address.b32.i2p .address.b32.i2p
-	cat -n .address.b32.i2p | sort -uk2 | sort -nk1 | cut -f2- | tee address.b32.i2p
-
+		sed "s|RADIOSPLASH||g" | tr -d ' ' | tee -a .address.b32.i2p
 
 eepsite-address-radio:
 	./bin/ii-tunlist | \
 		grep "RADIO$(station)" | \
 		sed "s|RADIO$(station)||g" | tr -d ' ' | tee -a .address.b32.i2p
 
+eepsite-address:
+	make eepsite-address-splash
+	make eepsite-address-radio
+	cat -n .address.b32.i2p | sort -uk2 | sort -nk1 | cut -f2- | tee address.b32.i2p
 
 eepsite-linkfile: eepsite-address
-	@echo http://$(shell head -n 1 .address.b32.i2p).b32.i2p | tee address.b32.i2p #&& rm .address.b32.i2p
-	@echo http://$(shell tail -n 1 .address.b32.i2p).b32.i2p | tee -a address.b32.i2p #&& rm .address.b32.i2p
 
 eepsite-content:
 	curl http://127.0.0.1:7099/mpd.ogg | ffplay
 
 eepsite-curl:
-	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p)
+	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p).b32.i2p
+
+tail:
+	@echo $(shell tail -n $(shell make -s expr) address.b32.i2p ) | tee stations.txt
+
+expr:
+	expr $(shell wc -l address.b32.i2p | sed 's| address.b32.i2p||g') - 1
 
 md:
 	@echo "$(CONFIG_PAGE)"
+	./bin/link-helper
+	@echo "$(CONFIG_INFO)"
+	./bin/config-helper
 
 html:
 	make -s md | markdown | tee index.html
+
+link-helper:
+	./bin/link-helper | markdown | tee -a index.html
+
+config-helper:
+	./bin/config-helper | markdown | tee -a index.html
 
 site: eepsite-linkfile
 	make -s md | markdown | tee index.html
