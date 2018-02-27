@@ -35,12 +35,13 @@ shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
 
-echo "verbose=$verbose, \
-    station='$station', \
-    music_dir='$music_dir', \
-    playlist_dir='$playlist_dir', \
-    tag_cache='$tag_cache', \
-    i2pd_dat='$i2pd_dat' \
+echo "
+    station='$station',
+    music_dir='$music_dir',
+    playlist_dir='$playlist_dir',
+    tag_cache='$tag_cache',
+    i2pd_dat='$i2pd_dat'
+
     Leftovers: $@"
 
 #make tunconf

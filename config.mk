@@ -27,11 +27,10 @@ configuration. \n\
 \n        destinationport = 80 \
 \n        inbound.length = 1 \
 \n        keys = radioone-client.dat \
-\n        matchtunnels = true \
+\n        matchtunnels = true \n\
 \n  You can also use an http proxy: \n\
-\n\
-        vlc $(shell head -n 1 address.b32.i2p) \\ \n\
-         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous
+\n        vlc $(shell head -n 1 address.b32.i2p) \\ \
+\n         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous
 endef
 
 export CONFIG_PAGE
