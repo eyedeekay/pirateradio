@@ -19,14 +19,14 @@ clean-network: clean
 build: build-mpd build-website build-eepsite
 
 build-mpd:
-	docker build -f Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
+	docker build -f Dockerfiles/Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
 
 build-website:
 	touch index.html
-	docker build -f Dockerfile.splash -t eyedeekay/pirateradio-splash .
+	docker build -f Dockerfiles/Dockerfile.splash -t eyedeekay/pirateradio-splash .
 
 build-eepsite:
-	docker build -f Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
+	docker build -f Dockerfiles/Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
 
 clean: clean-mpd clean-website clean-eepsite
 
