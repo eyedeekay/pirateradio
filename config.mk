@@ -3,6 +3,7 @@ music_dir:=$(PWD)/music
 playlist_dir:=$(PWD)/playlist
 tag_cache:=$(PWD)/tag_cache
 i2pd_dat:=$(PWD)/i2pd_dat
+station:=mpd
 
 define CONFIG_PAGE
 # My i2p Radio Station\n\
@@ -34,3 +35,16 @@ configuration. \n\
 endef
 
 export CONFIG_PAGE
+
+define TUN_CONF
+[RADIO$(station)]\
+\ntype = http\
+\nhost = pirateradio-$(station)\
+\nport = 8080\
+\ninport = 80\
+\ninbound.length = 1\
+\noutbound.length = 1\
+\nkeys = radio-$(station).dat\n
+endef
+
+export TUN_CONF

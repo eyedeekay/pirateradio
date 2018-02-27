@@ -7,11 +7,14 @@ OPTIND=1         # Reset in case getopts has been used previously in the shell.
 output_file=""
 verbose=0
 
-while getopts "h?m:p:t:i:" opt; do
+while getopts "h?s:m:p:t:i:" opt; do
     case "$opt" in
     h|\?)
         make usage
         exit 0
+        ;;
+    s)
+        station="$(pwd)/$OPTARG"; export station="$(pwd)/$OPTARG"
         ;;
     m)
         music_dir="$(pwd)/$OPTARG"; export music_dir="$(pwd)/$OPTARG"
@@ -33,10 +36,12 @@ shift $((OPTIND-1))
 [ "$1" = "--" ] && shift
 
 echo "verbose=$verbose, \
+    station='$station', \
     music_dir='$music_dir', \
     playlist_dir='$playlist_dir', \
     tag_cache='$tag_cache', \
     i2pd_dat='$i2pd_dat' \
     Leftovers: $@"
 
+#make tunconf
 #make install

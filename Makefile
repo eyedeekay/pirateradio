@@ -19,6 +19,11 @@ usage:
 	@echo "------------------"
 	@echo
 	@echo "$(CONFIG_PAGE)"
+	@echo
+	@echo "Tunnel Configuration"
+	@echo
+	@echo "$(TUN_CONF)"
+	@echo
 
 include config.mk
 include include/setup.mk
@@ -26,10 +31,10 @@ include include/setup.mk
 run: network run-mpd run-eepsite run-website
 
 run-mpd: network
-	docker run -d --name pirateradio-mpd \
+	docker run -d --name pirateradio-$(station) \
 		--network pirateradio \
-		--network-alias pirateradio-mpd \
-		--hostname pirateradio-mpd \
+		--network-alias pirateradio-$(station) \
+		--hostname pirateradio-$(station) \
 		-p 127.0.0.1:6601:6601 \
 		--volume $(music_dir):/var/lib/mpd/music:rw \
 		--volume $(playlist_dir):/var/lib/mpd/playlist:rw \
@@ -57,6 +62,9 @@ run-eepsite: network
 		-p 127.0.0.1:7071:7071 \
 		--volume $(i2pd_dat):/var/lib/i2pd:rw \
 		eyedeekay/pirateradio-eepsite
+
+tunconf:
+	@echo "$(TUN_CONF)" | tee -a tunnels.conf
 
 mpc-playlist:
 	mpc -h 127.0.0.1 -p 6601 ls | mpc -h 127.0.0.1 -p 6601 add

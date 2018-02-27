@@ -65,7 +65,7 @@ restart-eepsite: clean-eepsite build-eepsite run-eepsite
 	sleep 2
 	make log-eepsite
 
-log: log-mpd log-eepsite
+log: log-mpd log-website log-eepsite
 
 log-mpd:
 	docker logs pirateradio-mpd
