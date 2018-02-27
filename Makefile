@@ -152,10 +152,10 @@ eepsite-linkfile: eepsite-address
 	@echo http://$(shell tail -n 1 .address.b32.i2p).b32.i2p | tee -a address.b32.i2p #&& rm .address.b32.i2p
 
 eepsite-content:
-	export http_proxy=http://127.0.0.1:4444; http_proxy=http://127.0.0.0:4444; cvlc $(shell cat address.b32.i2p)
+	cvlc http://127.0.0.1:7099
 
 eepsite-curl:
-	/usr/bin/curl -x 127.0.0.1:4444 $(shell tail -n 1 address.b32.i2p)
+	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p)
 
 md:
 	@echo "My i2p Radio Station"
@@ -176,7 +176,7 @@ md:
 	@echo "        type = client"
 	@echo "        address = 127.0.0.1"
 	@echo "        port = 7099"
-	@echo "        destination = $(shell head -n 1 address.b32.i2p)"
+	@echo "        destination = $(shell tail -n 1 address.b32.i2p)"
 	@echo "        destinationport = 80"
 	@echo "        inbound.length = 1"
 	@echo "        keys = radioone-client.dat"
@@ -188,5 +188,5 @@ site: eepsite-linkfile
 	make restart-website
 
 diffsite:
-	/usr/bin/curl -x 127.0.0.1:4444 $(shell tail -n 1 address.b32.i2p) > .index.html
+	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p) > .index.html
 	diff .index.html index.html && rm .index.html
