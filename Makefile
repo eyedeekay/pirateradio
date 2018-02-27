@@ -167,9 +167,9 @@ md:
 	@echo "  * **[Splash URL:]($(shell tail -n 1 address.b32.i2p))**"
 	@echo "  * **[Stream URL:]($(shell head -n 1 address.b32.i2p))**"
 	@echo
-	@echo " To listen with vlc, use a curlpipe"
+	@echo " To listen with vlc, set your http_proxy or use a curlpipe"
 	@echo
-	@echo "        curl $(shell head -n 1 address.b32.i2p) | vlc"
+	@echo "        /usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p) | cvlc"
 	@echo
 
 site: eepsite-linkfile
