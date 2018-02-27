@@ -7,5 +7,11 @@ RUN gpg --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 66F6C87B98E
 RUN apt-get update && apt-get install -y i2pd
 COPY tunnels.conf /etc/i2pd/tunnels.conf
 COPY i2pd.conf /etc/i2pd/i2pd.conf
-USER i2pd
-CMD i2pd --service --loglevel=error --conf=/etc/i2pd/i2pd.conf tunconf=/etc/i2pd/tunnels.conf
+#USER i2pd
+CMD chown -R i2pd:i2pd /var/lib/i2pd; \
+    su - -c "i2pd i2pd --service --loglevel=info \
+        --conf=/etc/i2pd/i2pd.conf \
+        --tunconf=/etc/i2pd/tunnels.conf \
+        --log=/var/lib/i2pd/log"; \
+    sleep 5; \
+    tail -f /var/log/i2pd/log

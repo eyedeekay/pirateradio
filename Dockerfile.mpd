@@ -1,6 +1,7 @@
 FROM alpine:edge
 RUN apk update
-RUN apk add mpd
-RUN adduser -h /home/pirateradio -D pirateradio pirateradio
+RUN apk add mpd vorbis-tools
 COPY mpd.conf /etc/mpd.conf
-CMD mpd --no-daemon
+CMD chown -R mpd:audio /var/lib/mpd/; \
+    chmod o+rwx /var/lib/mpd; \
+    mpd --verbose --no-daemon
