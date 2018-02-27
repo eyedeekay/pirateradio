@@ -152,7 +152,7 @@ eepsite-linkfile: eepsite-address
 	@echo http://$(shell tail -n 1 .address.b32.i2p).b32.i2p | tee -a address.b32.i2p #&& rm .address.b32.i2p
 
 eepsite-content:
-	/usr/bin/curl -x 127.0.0.1:4444 $(shell cat address.b32.i2p) | cvlc
+	export http_proxy=127.0.0.1:4444; http_proxy=127.0.0.0:4444; cvlc $(shell cat address.b32.i2p)
 
 eepsite-curl:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell tail -n 1 address.b32.i2p)
