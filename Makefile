@@ -91,9 +91,10 @@ eepsite-address-splash:
 		sed "s|RADIOSPLASH||g" | tr -d ' ' | tee .address.b32.i2p
 
 eepsite-address:
-	rm -f address.b32.i2p .address.b32.i2p
 	make eepsite-address-splash
 	make eepsite-address-radio
+	cat -n address.b32.i2p | sort -uk2 | sort -nk1 | cut -f2-
+
 
 eepsite-address-radio:
 	./bin/ii-tunlist | \
