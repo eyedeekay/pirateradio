@@ -167,9 +167,20 @@ md:
 	@echo "  * **[Splash URL:]($(shell tail -n 1 address.b32.i2p))**"
 	@echo "  * **[Stream URL:]($(shell head -n 1 address.b32.i2p))**"
 	@echo
-	@echo " To listen with vlc, set your http_proxy or use a curlpipe"
+	@echo " To listen as an http stream, you will need a client tunnel. "
+	@echo "To configure an client tunnel in i2pd, add the following lines to"
+	@echo "your /etc/i2pd/tunnels.conf file(or other tunnels.conf file per your"
+	@echo "configuration."
 	@echo
-	@echo "        /usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p) | cvlc"
+	@echo "        [radioone-client]"
+	@echo "        type = client"
+	@echo "        address = 127.0.0.1"
+	@echo "        port = 7099"
+	@echo "        destination = $(shell head -n 1 address.b32.i2p)"
+	@echo "        destinationport = 80"
+	@echo "        inbound.length = 1"
+	@echo "        keys = radioone-client.dat"
+	@echo "        matchtunnels = true"
 	@echo
 
 site: eepsite-linkfile
