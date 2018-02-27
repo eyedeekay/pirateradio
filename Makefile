@@ -77,6 +77,8 @@ new-tunconf:
 
 
 tunconf:
+	grep -v "$(station)" tunnels.conf || \
+		echo "Problem encountered, tunnel already exists in tunnels.conf"; exit
 	@echo "$(TUN_CONF)" | tee -a tunnels.conf
 
 mpc-playlist:

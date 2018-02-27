@@ -44,5 +44,5 @@ echo "
 
     Leftovers: $@"
 
-#make tunconf
-#make install
+make tunconf
+make install
