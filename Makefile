@@ -161,6 +161,9 @@ md:
 	@echo "My i2p Radio Station"
 	@echo "===================="
 	@echo
+	@echo "if you found my demo site by accident, the music comes from Kevin"
+	@echo "MacLeod of incompetech.com"
+	@echo
 	@echo "Turnkey deep web music streaming"
 	@echo "--------------------------------"
 	@echo
