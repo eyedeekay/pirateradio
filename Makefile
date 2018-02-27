@@ -72,13 +72,21 @@ mpc-playlist:
 	mpc -h 127.0.0.1 -p 6601 repeat on
 	mpc -h 127.0.0.1 -p 6601 random on
 
+eepsite-address-splash:
+	./bin/ii-tunlist | \
+		grep "RADIOSPLASH" | \
+		sed "s|RADIOSPLASH||g" | tr -d ' ' | tee .address.b32.i2p
+
 eepsite-address:
 	rm -f address.b32.i2p .address.b32.i2p
-	/usr/bin/lynx -dump -listonly 127.0.0.1:7071/?page=i2p_tunnels | \
-		grep 'destination&b32' | \
-		sed 's| 8||g' | sed 's| 9||g' | sed 's| 10||g' | sed 's| 11||g' | sed 's| 12||g' |\
-		tr -d '. ' | \
-		sed 's|http://127001:7071/?page=local_destination&b32=||g' | tee .address.b32.i2p
+	make eepsite-address-splash
+	make eepsite-address-radio
+
+eepsite-address-radio:
+	./bin/ii-tunlist | \
+		grep "RADIO$(station)" | \
+		sed "s|RADIO$(station)||g" | tr -d ' ' | tee -a .address.b32.i2p
+
 
 eepsite-linkfile: eepsite-address
 	@echo http://$(shell head -n 1 .address.b32.i2p).b32.i2p | tee address.b32.i2p #&& rm .address.b32.i2p
@@ -101,5 +109,5 @@ site: eepsite-linkfile
 	make restart-website
 
 diffsite:
-	/usr/bin/curl -x 127.0.0.1:4444 $(shell tail -n 1 address.b32.i2p) > .index.html
+	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p) > .index.html
 	diff .index.html index.html && rm .index.html

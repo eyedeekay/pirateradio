@@ -1,9 +1,11 @@
 
-install: network build run
+install: tunconf network build run
 	sleep 5; make site
 	make mpc-playlist
 
-reinstall: clean-network install
+reinstall: clean-network network build run
+	sleep 5; make site
+	make mpc-playlist
 
 network:
 	docker network create pirateradio
