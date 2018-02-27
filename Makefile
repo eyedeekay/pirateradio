@@ -30,7 +30,6 @@ run-mpd: network
 		--network pirateradio \
 		--network-alias pirateradio-mpd \
 		--hostname pirateradio-mpd \
-		--expose 8080 \
 		-p 127.0.0.1:6601:6601 \
 		--volume $(music_dir):/var/lib/mpd/music:rw \
 		--volume $(playlist_dir):/var/lib/mpd/playlist:rw \

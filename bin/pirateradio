@@ -1,0 +1,42 @@
+#! /usr/bin/env sh
+
+# A POSIX variable
+OPTIND=1         # Reset in case getopts has been used previously in the shell.
+
+# Initialize our own variables:
+output_file=""
+verbose=0
+
+while getopts "h?m:p:t:i:" opt; do
+    case "$opt" in
+    h|\?)
+        make usage
+        exit 0
+        ;;
+    m)
+        music_dir="$(pwd)/$OPTARG"; export music_dir="$(pwd)/$OPTARG"
+        ;;
+    p)
+        playlist_dir="$(pwd)/$OPTARG"; export playlist_dir="$(pwd)/$OPTARG"
+        ;;
+    t)
+        tag_cache="$(pwd)/$OPTARG"; export tag_cache="$(pwd)/$OPTARG"
+        ;;
+    i)
+        i2p_dat="$(pwd)/$OPTARG"; export i2pd_dat="$(pwd)/$OPTARG"
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+[ "$1" = "--" ] && shift
+
+echo "verbose=$verbose, \
+    music_dir='$music_dir', \
+    playlist_dir='$playlist_dir', \
+    tag_cache='$tag_cache', \
+    i2pd_dat='$i2pd_dat' \
+    Leftovers: $@"
+
+#make install

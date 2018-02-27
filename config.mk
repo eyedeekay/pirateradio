@@ -1,8 +1,8 @@
 
-music_dir=$(PWD)/music
-playlist_dir=$(PWD)/playlist
-tag_cache=$(PWD)/tag_cache
-i2pd_dat=$(PWD)/i2pd_dat
+music_dir:=$(PWD)/music
+playlist_dir:=$(PWD)/playlist
+tag_cache:=$(PWD)/tag_cache
+i2pd_dat:=$(PWD)/i2pd_dat
 
 define CONFIG_PAGE
 # My i2p Radio Station\n\
