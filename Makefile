@@ -152,7 +152,7 @@ eepsite-linkfile: eepsite-address
 	@echo http://$(shell tail -n 1 .address.b32.i2p).b32.i2p | tee -a address.b32.i2p #&& rm .address.b32.i2p
 
 eepsite-content:
-	cvlc http://127.0.0.1:7099
+	cvlc http://127.0.0.1:7099/mpd.ogg
 
 eepsite-curl:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p)
@@ -176,7 +176,7 @@ md:
 	@echo "        type = client"
 	@echo "        address = 127.0.0.1"
 	@echo "        port = 7099"
-	@echo "        destination = $(shell head -n 1 address.b32.i2p)"
+	@echo "        destination = $(shell head -n 1 address.b32.i2p | sed 's|http://||g')"
 	@echo "        destinationport = 80"
 	@echo "        inbound.length = 1"
 	@echo "        keys = radioone-client.dat"
