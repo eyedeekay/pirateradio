@@ -152,7 +152,7 @@ eepsite-linkfile: eepsite-address
 	@echo http://$(shell tail -n 1 .address.b32.i2p).b32.i2p | tee -a address.b32.i2p #&& rm .address.b32.i2p
 
 eepsite-content:
-	cvlc http://127.0.0.1:7099/mpd.ogg
+	curl http://127.0.0.1:7099/mpd.ogg | ffplay
 
 eepsite-curl:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p)
@@ -182,6 +182,12 @@ md:
 	@echo "        keys = radioone-client.dat"
 	@echo "        matchtunnels = true"
 	@echo
+	@echo ' You can also use an http proxy:'
+	@echo
+	@echo "        vlc $(shell head -n 1 address.b32.i2p) \\"
+	@echo "         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous"
+	@echo
+
 
 site: eepsite-linkfile
 	make -s md | markdown | tee index.html
