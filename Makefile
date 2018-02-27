@@ -25,7 +25,7 @@ install: network build run
 	sleep 5; make site
 	make mpc-playlist
 
-reinstall: restart
+reinstall: clean-network install
 
 network:
 	docker network create pirateradio
@@ -44,6 +44,7 @@ build-mpd:
 	docker build -f Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
 
 build-website:
+	touch index.html
 	docker build -f Dockerfile.splash -t eyedeekay/pirateradio-splash .
 
 build-eepsite:
@@ -165,6 +166,14 @@ md:
 	@echo
 	@echo "  * **[Splash URL:]($(shell tail -n 1 address.b32.i2p))**"
 	@echo "  * **[Stream URL:]($(shell head -n 1 address.b32.i2p))**"
+	@echo
+	@echo " To listen with vlc, set your http_proxy to an i2pd http proxy
+	@echo
+	@echo "        cvlc $(shell head -n 1 address.b32.i2p)"
+	@echo
+	@echo " To listen with cmus, set your http_proxy to an i2pd http proxy
+	@echo
+	@echo "        cmus $(shell head -n 1 address.b32.i2p)"
 	@echo
 
 site: eepsite-linkfile
