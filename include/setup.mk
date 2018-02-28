@@ -42,8 +42,9 @@ clean-website:
 clean-eepsite:
 	docker rm -f pirateradio-eepsite; true
 
-clobber: clean clobber-mpd clobber-website clobber-eepsite clean-network new-tunconf
-	rm -rf tag_cache i2pd_dat
+clobber:
+	sudo rm -rf tag_cache i2pd_dat
+	make clean clobber-mpd clobber-website clobber-eepsite clean-network new-tunconf
 
 clobber-mpd:
 	docker rmi -f eyedeekay/pirateradio-mpd; true

@@ -34,3 +34,16 @@ mpd needs to control it in the container.
 When you're ready, run mpc to re-generate the playlist.
 
         make mpc-start
+
+## Adding More Stations
+
+In order to change the station, simply change the environment variables to point
+to a new library. These are in the config.mk file, at the top. You won't need to
+change the i2pd_dat environment variable, as this is shared between all the
+radio stations.
+
+        music_dir:=$(PWD)/music
+        playlist_dir:=$(PWD)/playlist
+        tag_cache:=$(PWD)/tag_cache
+        station:=mpd
+

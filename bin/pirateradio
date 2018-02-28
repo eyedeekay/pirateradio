@@ -3,6 +3,20 @@
 # A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
+usage(){
+echo "
+    -s : set station
+        station='$station',
+    -m : set directory to look for music files
+        music_dir='$music_dir',
+    -p : set directory to look for and save playlists
+        playlist_dir='$playlist_dir',
+    -t : set directory for storing the mpd tag cache(any empty directory will do.)
+        tag_cache='$tag_cache',
+
+    Leftovers: $@"
+}
+
 # Initialize our own variables:
 output_file=""
 verbose=0
@@ -25,9 +39,6 @@ while getopts "h?s:m:p:t:i:" opt; do
     t)
         tag_cache="$(pwd)/$OPTARG"; export tag_cache="$(pwd)/$OPTARG"
         ;;
-    i)
-        i2p_dat="$(pwd)/$OPTARG"; export i2pd_dat="$(pwd)/$OPTARG"
-        ;;
     esac
 done
 
@@ -35,14 +46,7 @@ shift $((OPTIND-1))
 
 [ "$1" = "--" ] && shift
 
-echo "
-    station='$station',
-    music_dir='$music_dir',
-    playlist_dir='$playlist_dir',
-    tag_cache='$tag_cache',
-    i2pd_dat='$i2pd_dat'
+usage
 
-    Leftovers: $@"
-
-make tunconf
-make install
+#make tunconf
+#make install
