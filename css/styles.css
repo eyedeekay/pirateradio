@@ -3,6 +3,17 @@ h1 {
     font: monospace;
     text-align: center;
 }
+
+h2 {
+    font: monospace;
+    text-align: center;
+}
+
+h3 {
+    font: monospace;
+    text-align: center;
+}
+
 body {
     padding: 20px;
     border: 20px groove #deb887;
