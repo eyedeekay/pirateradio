@@ -23,7 +23,14 @@ body {
 
 p {
     padding: 20px;
-    border: 20px groove #deb887;
+    border: 2px groove #deb887;
     background: white;
+    color: black;
+}
+
+code {
+    padding: 20px;
+    border: 2px dotted #deb887;
+    background: #ff8dc;
     color: black;
 }
