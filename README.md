@@ -40,10 +40,15 @@ When you're ready, run mpc to re-generate the playlist.
 In order to change the station, simply change the environment variables to point
 to a new library. These are in the config.mk file, at the top. You won't need to
 change the i2pd_dat environment variable, as this is shared between all the
-radio stations.
+radio stations. The variables you'll need to change(and their defaults) are as
+follows:
 
         music_dir:=$(PWD)/music
         playlist_dir:=$(PWD)/playlist
         tag_cache:=$(PWD)/tag_cache
         station:=mpd
+
+A script has been provided to help you set up radio stations on the fly, in
+bin/pirateradio. Running it with no arguments will create a random radio station
+with no music.
 
