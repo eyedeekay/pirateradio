@@ -1,3 +1,8 @@
+
+h1 {
+    font: monospace;
+    text-align: center;
+}
 body {
     padding: 20px;
     border: 20px groove #deb887;
