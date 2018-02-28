@@ -2,16 +2,19 @@
 h1 {
     font-family: monospace;
     text-align: center;
+    background: white;
 }
 
 h2 {
     font-family: monospace;
     text-align: center;
+    background: #fff8dc;
 }
 
 h3 {
     font-family: monospace;
     text-align: center;
+    background: #fff8dc;
 }
 
 body {
@@ -36,7 +39,7 @@ ul {
 }
 
 code {
-    margin-bottom: 4px;
+    padding-bottom: 4px;
     padding: 2px;
     border: 2px dotted #deb887;
     background: #fff8dc;
