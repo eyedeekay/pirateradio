@@ -140,7 +140,7 @@ head:
 head-helper:
 	@echo "$(CONFIG_HEAD)" | tee index.html
 
-site: eepsite-linkfile
+site: eepsite-linkfile tail
 	make head-helper
 	make -s md | markdown | tee -a index.html
 	@echo '</body>' | tee -a index.html
