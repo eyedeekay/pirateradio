@@ -36,7 +36,7 @@ build-eepsite:
 clean: clean-mpd clean-website clean-eepsite
 
 clean-mpd:
-	docker rm -f pirateradio-mpd; true
+	docker rm -f pirateradio-$(station); true
 
 clean-website:
 	docker rm -f pirateradio-splash; true
