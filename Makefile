@@ -124,7 +124,7 @@ md: tail
 	./bin/config-helper
 
 html:
-	make -s head | tee index.html
+	make head-helper
 	make -s md | markdown | tee index.html
 	@echo '</body>' | tee -a index.html
 
