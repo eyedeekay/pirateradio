@@ -112,7 +112,7 @@ eepsite-curl:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p).b32.i2p
 
 tail: eepsite-address
-	@echo $(shell tail -n $(shell make -s expr) address.b32.i2p ) | tee stations.txt
+	@echo "$(shell tail -n $(shell make -s expr) address.b32.i2p )" | tee stations.txt
 
 expr:
 	expr $(shell wc -l address.b32.i2p | sed 's| address.b32.i2p||g') - 1
