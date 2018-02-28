@@ -43,7 +43,7 @@ To configure an client tunnel in i2pd, add the following lines to \
 your /etc/i2pd/tunnels.conf file(or other tunnels.conf file per your \
 configuration. \n\
 \n  You can use an http proxy: \n\
-\n        vlc $(shell tail -n 1 address.b32.i2p) \\ \
+\n        vlc $(shell tail -n 1 address.b32.i2p).b32.i2p \\ \
 \n         --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous \m\
 \n or configure tunnels \n
 endef
