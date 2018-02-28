@@ -12,4 +12,25 @@ and make it easy for others to do so too. To that end, this set of scripts
 creates three Docker containers, each running one of the tools necessary to make
 a radio station accessible over i2p.
 
-## Usage:
+## Usage
+
+First, clone the repository and enter the directory
+
+        git clone https://github.com/eyedeekay/pirateradio
+        cd pirateradio
+
+Now, run the script to generate the basic configuration files and start the
+services:
+
+        make install
+
+Finally, add some music into the "music" directory. You can change the location
+of the music directory by setting the music_dir environment variable. You will
+need to use sudo to copy the music into the folder, as it's a docker volume and
+mpd needs to control it in the container.
+
+        sudo cp *.ogg music/
+
+When you're ready, run mpc to re-generate the playlist.
+
+        make mpc-start
