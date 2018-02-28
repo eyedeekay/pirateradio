@@ -1,5 +1,7 @@
 #! /usr/bin/env sh
 
+set -e
+
 # A POSIX variable
 OPTIND=1         # Reset in case getopts has been used previously in the shell.
 
@@ -62,16 +64,16 @@ random options will be chosen for unset variables.
 CHECK="do while"
 
 while [ ! -z "$CHECK" ]; do
-    export port=$(( ( RANDOM % 100 )  + 46601 ))
-    port=$port
+    port=$(( ( RANDOM % 100 )  + 46601 ))
+    export port=$port
     echo '{"hostUp": true}' | nc 127.0.0.1 $port 2>&1 | grep refused && CHECK="" && echo $CHECK
 done
 
 hCHECK="do while"
 
 while [ ! -z "$hCHECK" ]; do
-    export hport=$(( ( RANDOM % 100 )  + 46701 ))
-    hport=$hport
+    hport=$(( ( RANDOM % 100 )  + 46701 ))
+    export hport=$hport
     echo '{"hostUp": true}' | nc 127.0.0.1 $hport 2>&1 | grep refused && hCHECK="" && echo $hCHECK
 done
 
@@ -79,4 +81,4 @@ echo $port $hport
 
 usage
 
-make -s install
+make install
