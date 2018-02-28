@@ -24,7 +24,7 @@ clean-network: clean
 build: build-mpd build-website build-eepsite
 
 build-mpd:
-	docker build -f Dockerfiles/Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
+	docker build --build-arg port=$(hport) -f Dockerfiles/Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
 
 build-website:
 	touch index.html

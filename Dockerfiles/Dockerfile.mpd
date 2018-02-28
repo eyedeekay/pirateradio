@@ -1,7 +1,9 @@
 FROM alpine:edge
+ARG port
 RUN apk update
 RUN apk add mpd vorbis-tools
 COPY mpd.conf /etc/mpd.conf
+RUN sed -i 's|8080|$port|g' /etc/mpd.conf
 CMD chown -R mpd:audio /var/lib/mpd/; \
     chmod o+rwx /var/lib/mpd; \
     mpd --verbose --no-daemon

@@ -58,18 +58,24 @@ random options will be chosen for unset variables.
 }
 
 #!/bin/bash
-IP=$1
-first_port=$2
-last_port=$3
+
 CHECK="do while"
 
 while [ ! -z "$CHECK" ]; do
     export port=$(( ( RANDOM % 100 )  + 46601 ))
-    export port=$port
+    port=$port
     echo '{"hostUp": true}' | nc 127.0.0.1 $port 2>&1 | grep refused && CHECK="" && echo $CHECK
 done
 
-echo $port
+hCHECK="do while"
+
+while [ ! -z "$hCHECK" ]; do
+    export hport=$(( ( RANDOM % 100 )  + 46701 ))
+    hport=$hport
+    echo '{"hostUp": true}' | nc 127.0.0.1 $hport 2>&1 | grep refused && hCHECK="" && echo $hCHECK
+done
+
+echo $port $hport
 
 usage
 

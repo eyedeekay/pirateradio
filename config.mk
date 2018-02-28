@@ -5,6 +5,7 @@ tag_cache?=$(PWD)/tag_cache
 i2pd_dat?=$(PWD)/i2pd_dat
 station?=mpd
 port?=6601
+hport?=8080
 
 define CONFIG_HEAD
 \n<!doctype html>\
@@ -56,7 +57,7 @@ define TUN_CONF
 [RADIO$(station)]\
 \ntype = http\
 \nhost = pirateradio-$(station)\
-\nport = 8080\
+\nport = $(hport)\
 \ninport = 80\
 \ninbound.length = 1\
 \noutbound.length = 1\
