@@ -149,3 +149,6 @@ site: eepsite-linkfile tail
 diffsite:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p) > .index.html
 	diff .index.html index.html && rm .index.html
+
+dist-config-helper:
+	./bin/config-helper | sed -i 's|        ||g'
