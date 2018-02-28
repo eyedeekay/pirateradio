@@ -101,6 +101,7 @@ eepsite-address:
 	make eepsite-address-splash
 	make eepsite-address-radio
 	cat -n .address.b32.i2p | sort -uk2 | sort -nk1 | cut -f2- | tee address.b32.i2p
+	cp addres.b32.i2p .address.b32.i2p
 
 eepsite-linkfile: eepsite-address
 
@@ -116,7 +117,7 @@ tail:
 expr:
 	expr $(shell wc -l address.b32.i2p | sed 's| address.b32.i2p||g') - 1
 
-md:
+md: tail
 	@echo "$(CONFIG_PAGE)"
 	./bin/link-helper
 	@echo "$(CONFIG_INFO)"
