@@ -10,6 +10,7 @@ usage:
 	@echo 'Configured Directories'
 	@echo '----------------------'
 	@echo
+	@echo "  * Station $(station)"
 	@echo "  * Host Music Directory $(music_dir)"
 	@echo "  * Host Playlist Directory $(playlist_dir)"
 	@echo "  * Host Tag Cache Directory $(tag_cache)"
@@ -77,7 +78,8 @@ new-tunconf:
 
 
 tunconf:
-	grep "$(station)" tunnels.conf || echo "$(TUN_CONF)" | tee -a tunnels.conf
+	cat tunnels.conf | tr '\n' ' ' | grep "$(station)" || \
+	echo "$(TUN_CONF)" | tee -a tunnels.conf
 
 mpc-playlist:
 	mpc -h 127.0.0.1 -p $(port) ls | mpc -h 127.0.0.1 -p $(port) add

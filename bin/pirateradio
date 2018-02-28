@@ -81,4 +81,10 @@ echo $port $hport
 
 usage
 
-make install
+make tunconf
+make network
+make clean config build run
+sleep 5
+make tail
+make site
+make mpc-playlist
