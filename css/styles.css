@@ -4,7 +4,7 @@ h1 {
     text-align: center;
     background: #fffbcd;
     border: 2px dotted #4b0082;
-    border-radius: 2px;
+    border-radius: 25px;
     color: #4b0082;
 }
 
@@ -13,7 +13,7 @@ h2 {
     text-align: center;
     background: #000000;
     border: 2px dotted #4b0082;
-    border-radius: 2px;
+    border-radius: 25px;
     color: #4b0082;
 }
 
@@ -22,7 +22,7 @@ h3 {
     text-align: center;
     background: #000000;
     border: 2px dotted #4b0082;
-    border-radius: 2px;
+    border-radius: 25px;
     color: #4b0082;
 }
 
