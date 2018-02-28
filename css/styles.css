@@ -22,15 +22,15 @@ body {
 }
 
 p {
-    padding: 20px;
+    padding: 2px;
     border: 2px groove #deb887;
     background: white;
     color: black;
 }
 
 code {
-    padding: 20px;
+    padding: 2px;
     border: 2px dotted #deb887;
-    background: #ff8dc;
+    background: #fff8dc;
     color: black;
 }
