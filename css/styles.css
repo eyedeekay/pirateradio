@@ -3,18 +3,19 @@ h1 {
     font-family: monospace;
     text-align: center;
     background: #fffbcd;
+    color: #4b0082;
 }
 
 h2 {
     font-family: monospace;
     text-align: center;
-    background: #fff8dc;
+    color: #4b0082;
 }
 
 h3 {
     font-family: monospace;
     text-align: center;
-    background: #fff8dc;
+    color: #4b0082;
 }
 
 body {
