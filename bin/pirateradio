@@ -57,7 +57,20 @@ random options will be chosen for unset variables.
     Leftovers: $@"
 }
 
+#!/bin/bash
+IP=$1
+first_port=$2
+last_port=$3
+CHECK="do while"
+
+while [ ! -z "$CHECK" ]; do
+    export port=$(( ( RANDOM % 100 )  + 46601 ))
+    export port=$port
+    echo '{"hostUp": true}' | nc 127.0.0.1 $port 2>&1 | grep refused && CHECK="" && echo $CHECK
+done
+
+echo $port
+
 usage
 
-#make tunconf
 #make install

@@ -4,6 +4,7 @@ playlist_dir:=$(PWD)/playlist
 tag_cache:=$(PWD)/tag_cache
 i2pd_dat:=$(PWD)/i2pd_dat
 station:=mpd
+port:=6601
 
 define CONFIG_HEAD
 \n<!doctype html>\

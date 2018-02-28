@@ -35,7 +35,7 @@ run-mpd: network
 		--network pirateradio \
 		--network-alias pirateradio-$(station) \
 		--hostname pirateradio-$(station) \
-		-p 127.0.0.1:6601:6601 \
+		-p 127.0.0.1:$(port):$(port) \
 		--volume $(music_dir):/var/lib/mpd/music:rw \
 		--volume $(playlist_dir):/var/lib/mpd/playlist:rw \
 		--volume $(tag_cache):/var/lib/mpd/tag_cache:rw \
@@ -82,10 +82,10 @@ tunconf:
 	@echo "$(TUN_CONF)" | tee -a tunnels.conf
 
 mpc-playlist:
-	mpc -h 127.0.0.1 -p 6601 ls | mpc -h 127.0.0.1 -p 6601 add
-	mpc -h 127.0.0.1 -p 6601 play
-	mpc -h 127.0.0.1 -p 6601 repeat on
-	mpc -h 127.0.0.1 -p 6601 random on
+	mpc -h 127.0.0.1 -p $(port) ls | mpc -h 127.0.0.1 -p $(port) add
+	mpc -h 127.0.0.1 -p $(port) play
+	mpc -h 127.0.0.1 -p $(port) repeat on
+	mpc -h 127.0.0.1 -p $(port) random on
 
 eepsite-address-splash:
 	./bin/ii-tunlist | \
