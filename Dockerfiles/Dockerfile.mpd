@@ -1,7 +1,7 @@
 FROM alpine:edge
 ARG port
 ARG hport
-ENV port=$port hport=$port
+ENV port=$port hport=$hport
 RUN apk update
 RUN apk add mpd vorbis-tools
 COPY mpd.conf /etc/mpd.conf
