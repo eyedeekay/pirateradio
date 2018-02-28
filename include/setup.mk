@@ -45,7 +45,7 @@ clean-eepsite:
 	docker rm -f pirateradio-eepsite; true
 
 clobber:
-	sudo rm -rf tag_cache i2pd_dat *.b32.i2p ./.*.b32.i2p station.txt index.html index.md
+	sudo rm -rf tag_cache i2pd_dat *.b32.i2p ./.*.b32.i2p stations.txt index.html index.md
 	make clean clobber-mpd clobber-website clobber-eepsite clean-network new-tunconf
 
 clobber-mpd:
