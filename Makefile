@@ -111,7 +111,7 @@ eepsite-content:
 eepsite-curl:
 	/usr/bin/curl -x 127.0.0.1:4444 $(shell head -n 1 address.b32.i2p).b32.i2p
 
-tail:
+tail: eepsite-address
 	@echo $(shell tail -n $(shell make -s expr) address.b32.i2p ) | tee stations.txt
 
 expr:
@@ -137,8 +137,11 @@ config-helper:
 head:
 	@echo "$(CONFIG_HEAD)"
 
+head-helper:
+	@echo "$(CONFIG_HEAD)" | tee index.html
+
 site: eepsite-linkfile
-	make -s head | tee index.html
+	make head-helper
 	make -s md | markdown | tee -a index.html
 	@echo '</body>' | tee -a index.html
 	make restart-website
