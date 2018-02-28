@@ -28,6 +28,13 @@ p {
     color: black;
 }
 
+li {
+    padding: 2px;
+    border: 2px groove #deb887;
+    background: white;
+    color: black;
+}
+
 code {
     margin: 4px;
     padding: 2px;
