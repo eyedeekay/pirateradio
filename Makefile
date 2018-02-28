@@ -151,4 +151,4 @@ diffsite:
 	diff .index.html index.html && rm .index.html
 
 dist-config-helper:
-	./bin/config-helper | sed -i 's|        ||g'
+	./bin/config-helper | sed 's|        ||g'
