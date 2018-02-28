@@ -29,6 +29,7 @@ p {
 }
 
 code {
+    margin: 4px;
     padding: 2px;
     border: 2px dotted #deb887;
     background: #fff8dc;
