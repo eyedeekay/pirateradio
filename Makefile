@@ -151,4 +151,5 @@ diffsite:
 	diff .index.html index.html && rm .index.html
 
 dist-config-helper:
+	mkdir -p downloads
 	./bin/config-helper | sed 's|        ||g' | tee downloads/tunnels.client.conf
