@@ -1,20 +1,27 @@
 
 h1 {
-    font: monospace;
+    font-family: monospace;
     text-align: center;
 }
 
 h2 {
-    font: monospace;
+    font-family: monospace;
     text-align: center;
 }
 
 h3 {
-    font: monospace;
+    font-family: monospace;
     text-align: center;
 }
 
 body {
+    padding: 20px;
+    border: 20px groove #deb887;
+    background: black;
+    color: black;
+}
+
+p {
     padding: 20px;
     border: 20px groove #deb887;
     background: white;
