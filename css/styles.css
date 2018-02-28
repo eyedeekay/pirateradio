@@ -20,22 +20,22 @@ h3 {
 body {
     padding: 20px;
     border: 20px groove #deb887;
-    background: #111111;
-    color: #111111;
+    background: #020003;
+    color: #020003;
 }
 
 p {
     padding: 2px;
     border: 2px groove #deb887;
     background: #fffbcd;
-    color: #111111;
+    color: #020003;
 }
 
 ul {
     padding: 2px;
     border: 2px groove #deb887;
     background: #fffbcd;
-    color: #111111;
+    color: #020003;
 }
 
 pre {
@@ -43,5 +43,5 @@ pre {
     padding: 2px;
     border: 2px dotted #deb887;
     background: #fff8dc;
-    color: #111111;
+    color: #020003;
 }
