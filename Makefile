@@ -101,7 +101,7 @@ eepsite-address:
 	make eepsite-address-splash
 	make eepsite-address-radio
 	cat -n .address.b32.i2p | sort -uk2 | sort -nk1 | cut -f2- | tee address.b32.i2p
-	cp addres.b32.i2p .address.b32.i2p
+	cp address.b32.i2p .address.b32.i2p
 
 eepsite-linkfile: eepsite-address
 
