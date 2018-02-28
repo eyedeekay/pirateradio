@@ -3,20 +3,23 @@ h1 {
     font-family: monospace;
     text-align: center;
     background: #fffbcd;
+    border: 2px dotted #4b0082;
     color: #4b0082;
 }
 
 h2 {
     font-family: monospace;
     text-align: center;
-    background: #fffbcd;
+    background: #000000;
+    border: 2px dotted #4b0082;
     color: #4b0082;
 }
 
 h3 {
     font-family: monospace;
     text-align: center;
-    background: #fffbcd;
+    background: #000000;
+    border: 2px dotted #4b0082;
     color: #4b0082;
 }
 
