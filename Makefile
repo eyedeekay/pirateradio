@@ -123,7 +123,9 @@ md:
 	./bin/config-helper
 
 html:
+	make -s head | tee index.html
 	make -s md | markdown | tee index.html
+	@echo '</body>' | tee -a index.html
 
 link-helper:
 	./bin/link-helper | markdown | tee -a index.html
@@ -131,8 +133,13 @@ link-helper:
 config-helper:
 	./bin/config-helper | markdown | tee -a index.html
 
+head:
+	@echo "$(CONFIG_HEAD)"
+
 site: eepsite-linkfile
-	make -s md | markdown | tee index.html
+	make -s head | tee index.html
+	make -s md | markdown | tee -a index.html
+	@echo '</body>' | tee -a index.html
 	make restart-website
 
 diffsite:

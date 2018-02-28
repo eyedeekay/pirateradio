@@ -5,6 +5,25 @@ tag_cache:=$(PWD)/tag_cache
 i2pd_dat:=$(PWD)/i2pd_dat
 station:=mpd
 
+define CONFIG_HEAD
+\n<!doctype html>\
+\n\
+\n<html lang=\"en\">\
+\n<head>\
+\n  <meta charset=\"utf-8\">\
+\n\
+\n  <title>My i2p Radio Station</title>\
+\n  <meta name=\"description\" content=\"My i2p Radio Station\">\
+\n  <meta name=\"author\" content=\"idk\">\
+\n\
+\n  <link rel=\"stylesheet\" href=\"css/styles.css\">\
+\n\
+\n</head>\n\
+\n<body>\n
+endef
+
+export CONFIG_HEAD
+
 define CONFIG_PAGE
 # My i2p Radio Station\n\
 \n If you found my demo site by accident, the music comes from Kevin \
