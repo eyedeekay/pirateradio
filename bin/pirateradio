@@ -83,8 +83,9 @@ usage
 
 make tunconf
 make network
-make clean config build run
+make clean build &>/dev/null
+make config run
 sleep 5
-make tail
-make site
+make tail &>/dev/null
+make site &>/dev/null
 make mpc-playlist
