@@ -1,11 +1,14 @@
 
-install: tunconf network build run
+install: tunconf network clean config build run
 	sleep 5; make tail; make site
 	make mpc-playlist
 
-reinstall: clean-network network build run
+reinstall: clean-network network clean config build run
 	sleep 5; make tail; make site
 	make mpc-playlist
+
+config:
+	mkdir -p $(music_dir) $(playlist_dir) $(tag_cache) $(i2pd_dat) $(station)
 
 network:
 	docker network create pirateradio
@@ -31,7 +34,6 @@ build-eepsite:
 	docker build -f Dockerfiles/Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
 
 clean: clean-mpd clean-website clean-eepsite
-	rm -f *.b32.i2p ./.*.b32.i2p station.txt index.html index.md
 
 clean-mpd:
 	docker rm -f pirateradio-mpd; true
@@ -43,7 +45,7 @@ clean-eepsite:
 	docker rm -f pirateradio-eepsite; true
 
 clobber:
-	sudo rm -rf tag_cache i2pd_dat
+	sudo rm -rf tag_cache i2pd_dat *.b32.i2p ./.*.b32.i2p station.txt index.html index.md
 	make clean clobber-mpd clobber-website clobber-eepsite clean-network new-tunconf
 
 clobber-mpd:
