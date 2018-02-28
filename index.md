@@ -1,9 +1,3 @@
-gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a
-epdldsx4sk6vu5bsv5mlujr3fiblptiyzb5qosaegoamo6jxgada
-gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a
-epdldsx4sk6vu5bsv5mlujr3fiblptiyzb5qosaegoamo6jxgada
-epdldsx4sk6vu5bsv5mlujr3fiblptiyzb5qosaegoamo6jxgada
-
 My i2p Radio Station
 ====================
 
@@ -27,7 +21,7 @@ configuration.
 
 You can use an http proxy:
 
-        vlc epdldsx4sk6vu5bsv5mlujr3fiblptiyzb5qosaegoamo6jxgada \ 
+        vlc epdldsx4sk6vu5bsv5mlujr3fiblptiyzb5qosaegoamo6jxgada \
          --http-proxy=127.0.0.1:4444 --http-reconnect --http-continuous \m
 
 or configure tunnels
