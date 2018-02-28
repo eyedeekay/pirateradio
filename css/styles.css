@@ -2,7 +2,7 @@
 h1 {
     font-family: monospace;
     text-align: center;
-    background: white;
+    background: #fffbcd;
 }
 
 h2 {
@@ -20,22 +20,22 @@ h3 {
 body {
     padding: 20px;
     border: 20px groove #deb887;
-    background: black;
-    color: black;
+    background: #111111;
+    color: #111111;
 }
 
 p {
     padding: 2px;
     border: 2px groove #deb887;
-    background: white;
-    color: black;
+    background: #fffbcd;
+    color: #111111;
 }
 
 ul {
     padding: 2px;
     border: 2px groove #deb887;
-    background: white;
-    color: black;
+    background: #fffbcd;
+    color: #111111;
 }
 
 pre {
@@ -43,5 +43,5 @@ pre {
     padding: 2px;
     border: 2px dotted #deb887;
     background: #fff8dc;
-    color: black;
+    color: #111111;
 }
