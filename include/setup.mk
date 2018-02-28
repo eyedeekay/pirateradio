@@ -1,10 +1,10 @@
 
 install: tunconf network build run
-	sleep 5; make site
+	sleep 5; make tail; make site
 	make mpc-playlist
 
 reinstall: clean-network network build run
-	sleep 5; make site
+	sleep 5; make tail; make site
 	make mpc-playlist
 
 network:

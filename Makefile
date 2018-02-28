@@ -117,7 +117,7 @@ tail: eepsite-address
 expr:
 	expr $(shell wc -l address.b32.i2p | sed 's| address.b32.i2p||g') - 1
 
-md: tail
+md:
 	@echo "$(CONFIG_PAGE)"
 	./bin/link-helper
 	@echo "$(CONFIG_INFO)"
