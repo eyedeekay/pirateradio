@@ -3,7 +3,7 @@ h1 {
     font-family: monospace;
     text-align: center;
     background: #fffbcd;
-    border: 2px dotted #4b0082;
+    border: 3px dotted #4b0082;
     border-radius: 25px;
     color: #4b0082;
 }
@@ -30,7 +30,7 @@ body {
     padding: 20px;
     border: 20px groove #deb887;
     background: #020003;
-    color: #020003;
+    color: #4b0082;
 }
 
 p {
