@@ -31,6 +31,7 @@ build-eepsite:
 	docker build -f Dockerfiles/Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
 
 clean: clean-mpd clean-website clean-eepsite
+	rm -f *.b32.i2p ./.*.b32.i2p station.txt index.html index.md
 
 clean-mpd:
 	docker rm -f pirateradio-mpd; true
