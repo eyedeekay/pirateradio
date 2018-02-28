@@ -30,7 +30,7 @@ define CONFIG_PAGE
 MacLeod of incompetech.com.\n\
 \n## Turnkey deep web music streaming\n\
 \n\
-\n  * [Splash URL:](http://$(shell head -n 1 address.b32.i2p).b32.i2p)
+\n  * [Splash URL:](http://$(shell head -n 1 address.b32.i2p).b32.i2p) \
 \n  * [Tunnel Configuration Fragment URL:](http://$(shell head -n 1 address.b32.i2p).b32.i2p/downloads/tunnels.client.conf)
 endef
 
