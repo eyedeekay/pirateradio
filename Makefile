@@ -40,6 +40,7 @@ run-mpd: network
 		--volume $(music_dir):/var/lib/mpd/music:rw \
 		--volume $(playlist_dir):/var/lib/mpd/playlist:rw \
 		--volume $(tag_cache):/var/lib/mpd/tag_cache:rw \
+		--restart always \
 		eyedeekay/pirateradio-mpd
 
 
@@ -48,6 +49,7 @@ run-website: network
 		--network pirateradio \
 		--network-alias pirateradio-splash \
 		--hostname pirateradio-splash \
+		--restart always \
 		eyedeekay/pirateradio-splash\
 
 
@@ -62,6 +64,7 @@ run-eepsite: network
 		-p :4567 \
 		-p 127.0.0.1:7071:7071 \
 		--volume $(i2pd_dat):/var/lib/i2pd:rw \
+		--restart always \
 		eyedeekay/pirateradio-eepsite
 
 new-tunconf:
