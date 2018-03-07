@@ -156,3 +156,6 @@ diffsite:
 dist-config-helper:
 	mkdir -p downloads
 	./bin/config-helper | sed 's|        ||g' | tee downloads/tunnels.client.conf
+
+visit:
+	http_proxy='http://127.0.0.1:4443' /usr/bin/uzbl 'http://gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a.b32.i2p'
