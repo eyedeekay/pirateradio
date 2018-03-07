@@ -50,7 +50,7 @@ run-website: network
 		--network-alias pirateradio-splash \
 		--hostname pirateradio-splash \
 		--restart always \
-		eyedeekay/pirateradio-splash\
+		eyedeekay/pirateradio-splash
 
 
 run-eepsite: network
