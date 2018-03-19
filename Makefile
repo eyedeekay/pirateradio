@@ -158,4 +158,7 @@ dist-config-helper:
 	./bin/config-helper | sed 's|        ||g' | tee downloads/tunnels.client.conf
 
 visit:
-	http_proxy='http://127.0.0.1:4443' /usr/bin/uzbl 'http://gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a.b32.i2p'
+	http_proxy='http://127.0.0.1:4443' /usr/bin/surf 'http://gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a.b32.i2p'
+
+visit-classic:
+	http_proxy='http://127.0.0.1:4444' /usr/bin/surf 'http://gkso46tc47hdua2kva5zahj3unmyh6ia7bv5oc2ybn2hmeowpz7a.b32.i2p'
