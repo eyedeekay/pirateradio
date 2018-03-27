@@ -24,14 +24,14 @@ clean-network: clean
 build: build-mpd build-website build-eepsite
 
 build-mpd:
-	docker build --build-arg hport=$(hport) --build-arg port=$(port) -f Dockerfiles/Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
+	docker build --force-rm --build-arg hport=$(hport) --build-arg port=$(port) -f Dockerfiles/Dockerfile.mpd -t eyedeekay/pirateradio-mpd .
 
 build-website:
 	touch index.html
-	docker build -f Dockerfiles/Dockerfile.splash -t eyedeekay/pirateradio-splash .
+	docker build --force-rm -f Dockerfiles/Dockerfile.splash -t eyedeekay/pirateradio-splash .
 
 build-eepsite:
-	docker build -f Dockerfiles/Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
+	docker build --force-rm -f Dockerfiles/Dockerfile.eepsite -t eyedeekay/pirateradio-eepsite .
 
 clean: clean-mpd clean-website clean-eepsite
 
